@@ -1,0 +1,29 @@
+{
+	"folders": [
+		{
+			"name": "Root monorepo",
+			"path": "."
+		},
+		{
+			"name": "RabbitMQ docker",
+			"path": "rabbitmq-docker",
+		},
+		{
+			"name": "Activity Logs Worker Consumer",
+			"path": "workers/activity-logs-worker-consumer"
+		},
+		{
+			"name": "Email Worker Consumer",
+			"path": "workers/email-worker-consumer"
+		},
+		{
+			"name": "Notification Worker Consumer",
+			"path": "workers/notification-worker-consumer"
+		},
+		{
+			"name": "Websocket Server",
+			"path": "websocket/task-management-websocket"
+		}
+	],
+	"settings": {}
+}

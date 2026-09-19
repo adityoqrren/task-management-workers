@@ -1,0 +1,58 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Users {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  username  String   @unique
+  name      String
+  password  String
+  createdAt DateTime @default(now()) @map("created_at")
+
+  //Relation
+  activities       ActivityLogs[] @relation("ActivityLogActor")
+  targetActivities ActivityLogs[] @relation("ActivityLogTarget")
+}
+
+model ActivityLogs {
+  id      String @id @default(uuid())
+  eventId String @unique
+
+  type String
+
+  actorId      String
+  targetUserId String?
+
+  entityType  String
+  entityId    String
+  entityTitle String?
+
+  projectId   String
+  projectName String?
+
+  taskId String?
+
+  message String?
+
+  createdAt DateTime @default(now())
+
+  actor      Users  @relation("ActivityLogActor", fields: [actorId], references: [id])
+  targetUser Users? @relation("ActivityLogTarget", fields: [targetUserId], references: [id])
+
+  @@index([actorId])
+  @@index([targetUserId])
+  @@index([projectId])
+  @@index([taskId])
+}

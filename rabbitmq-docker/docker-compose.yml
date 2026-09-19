@@ -1,0 +1,21 @@
+version: "3.9"
+services:
+  rabbitmq:
+    image: rabbitmq:3.13-management
+    container_name: rabbitmq
+    hostname: rabbitmq #stable name
+    ports:
+      - "5672:5672" # port AMQP
+      - "15672:15672" # port dashboard web
+    environment:
+      RABBITMQ_NODENAME: rabbit@rabbitmq #synchronized with hostname
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_DEFAULT_USER}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_DEFAULT_PASS}
+    volumes:
+      # Named volume
+      # Mount file konfigurasi dari host ke lokasi yang diharapkan oleh RabbitMQ
+      - rabbitmq_data:/var/lib/rabbitmq
+      - ./rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf
+
+volumes:
+  rabbitmq_data:

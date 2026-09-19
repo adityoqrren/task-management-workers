@@ -1,0 +1,19 @@
+{
+  "name": "task-management-websocket",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node websocket/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "type": "module",
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "jsonwebtoken": "^9.0.3",
+    "redis": "^5.10.0",
+    "ws": "^8.18.3"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
