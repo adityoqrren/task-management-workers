@@ -1,4 +1,4 @@
-import { createLog, getUserById } from "../repository/ActivityLogRepository.js";
+import { createLog, getUserById } from "../repository/activityLogRepository.js";
 
 export default async function handleTaskCommentDeleted(event) {
   console.log(`message: ${JSON.stringify(event)}`);

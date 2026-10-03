@@ -1,5 +1,5 @@
 import prisma from "../config/db.js";
-import { createLog, getUserById } from "../repository/ActivityLogRepository.js";
+import { createLog, getUserById } from "../repository/activityLogRepository.js";
 
 export default async function handleProjectMemberAdded(event) {
   console.log(`message in handleProjectMemberAdded: ${JSON.stringify(event)}`);

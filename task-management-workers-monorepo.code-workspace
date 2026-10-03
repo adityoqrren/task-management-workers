@@ -25,5 +25,7 @@
 			"path": "websocket/task-management-websocket"
 		}
 	],
-	"settings": {}
+	"settings": {
+		"git.autoRepositoryDetection": "subFolders"
+	}
 }

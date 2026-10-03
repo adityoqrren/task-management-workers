@@ -1,4 +1,4 @@
-import { createLog, getUserById } from "../repository/ActivityLogRepository.js";
+import { createLog, getUserById } from "../repository/activityLogRepository.js";
 
 export default async function handleProjectRestored(event) {
   console.log(`message in handleProjectRestored: ${JSON.stringify(event)}`);
