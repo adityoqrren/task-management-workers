@@ -33,7 +33,7 @@ async function startWorker() {
     durable: true,
   });
 
-  console.log("Email worker running...");
+  console.log(`Email worker running in ${process.env.NODE_ENV}`);
 
   channel.prefetch(1);
 

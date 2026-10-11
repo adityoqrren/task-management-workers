@@ -1,6 +1,7 @@
 import amqp from 'amqplib'
 
 export const startConsumer = async (onMessage) => {
+  console.log(`running in env ${process.env.NODE_ENV}`)
   const conn = await amqp.connect(process.env.RABBITMQ_URL)
   const channel = await conn.createChannel()
 
