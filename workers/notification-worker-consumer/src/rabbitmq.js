@@ -14,7 +14,7 @@ export const startConsumer = async (onMessage) => {
   })
 
   await channel.bindQueue(q.queue, 'domain-events', 'project.#') // # catches all separated by .
-  await channel.bindQueue(q.queue, 'domain-events', 'task.*') // * just can detect one word after .
+  await channel.bindQueue(q.queue, 'domain-events', 'task.#') // # matches all task.* events
 
   console.log("Notification worker running...");
 

@@ -16,7 +16,7 @@ datasource db {
 model Notifications {
   id          String   @id @default(uuid())
 
-  eventId     String   @unique
+  eventId     String
   type        String
 
   recipientId String
@@ -34,6 +34,18 @@ model Notifications {
 
   createdAt   DateTime @default(now())
 
+  @@unique([eventId, recipientId])
   @@index([recipientId, createdAt(sort: Desc)])
   @@index([recipientId, isRead])
+}
+
+// Read-only mirror of the API-owned table. The worker shares the API database.
+// Never run migrations from this repository.
+model ProjectMembers {
+  id        String  @id
+  projectId String  @map("project_id")
+  userId    String  @map("user_id")
+  isActive  Boolean @map("is_active")
+
+  @@index([projectId])
 }
