@@ -17,6 +17,12 @@ import handleTaskCommentUpdated from './handlers/taskCommentUpdated.js'
 import handleTaskCommentDeleted from './handlers/taskCommentDeleted.js'
 import handleTaskAttachmentAdded from './handlers/taskAttachmentAdded.js'
 import handleTaskAttachmentDeleted from './handlers/taskAttachmentDeleted.js'
+import handleProjectArchived from './handlers/projectArchived.js'
+import handleProjectUnarchived from './handlers/projectUnarchived.js'
+import handleTaskArchived from './handlers/taskArchived.js'
+import handleTaskUnarchived from './handlers/taskUnarchived.js'
+import handleTaskArchivedByProject from './handlers/taskArchivedByProject.js'
+import handleTaskUnarchivedByProject from './handlers/taskUnarchivedByProject.js'
 
 async function handleEvent(event) {
   switch (event.type) {
@@ -29,6 +35,12 @@ async function handleEvent(event) {
     //(new) project.updated
     case 'project.updated':
       return handleProjectUpdated(event)
+
+    case 'project.archived':
+      return handleProjectArchived(event)
+
+    case 'project.unarchived':
+      return handleProjectUnarchived(event)
 
     case 'project.deleted':
       return handleProjectDeleted(event)
@@ -52,6 +64,18 @@ async function handleEvent(event) {
 
     case 'task.completed':
       return handleTaskCompleted(event)
+
+    case 'task.archived':
+      return handleTaskArchived(event)
+
+    case 'task.archived.by_project':
+      return handleTaskArchivedByProject(event)
+
+    case 'task.unarchived':
+      return handleTaskUnarchived(event)
+
+    case 'task.unarchived.by_project':
+      return handleTaskUnarchivedByProject(event)
 
     case 'task.deleted':
       return handleTaskDeleted(event)
