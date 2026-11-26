@@ -4,7 +4,7 @@ export default async function handleTaskDeleted(event) {
   console.log(`message: ${JSON.stringify(event)}`);
 
   const { id: eventId, payload, actorId } = event;
-  const { projectId, projectName, taskId, taskTitle } = payload;
+  const { projectId, projectName, taskId, taskTitle, assignedUserId } = payload;
 
   try {
     // get data actor
@@ -17,7 +17,7 @@ export default async function handleTaskDeleted(event) {
       data: {
         eventId,
         type: 'task.deleted',
-        targetUserId: null,
+        targetUserId: assignedUserId ?? null,
         actorId,
         message: `${actorName} deleted task ${taskTitle}`,
         entityType: 'task',

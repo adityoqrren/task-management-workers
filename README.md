@@ -50,11 +50,12 @@ Each worker is an independent Node.js service with its own `package.json`.
 
 **Projects:** `project.created`, `project.updated`, `project.archived`,
 `project.unarchived`, `project.deleted`, `project.restored`,
-`project.permanent.deleted`, `project.member.added`
+`project.permanent.deleted`, `project.member.added`,
+`project.member.deactivated`, `project.member.reactivated`
 
-**Tasks:** `task.created`, `task.updated`, `task.assigned`, `task.completed`,
-`task.archived`, `task.unarchived`, `task.deleted`, `task.restored`,
-`task.permanent.deleted`, `task.archived.by_project`,
+**Tasks:** `task.created`, `task.updated`, `task.assigned`, `task.unassigned`,
+`task.completed`, `task.archived`, `task.unarchived`, `task.deleted`,
+`task.restored`, `task.permanent.deleted`, `task.archived.by_project`,
 `task.unarchived.by_project`, `task.comment.created`,
 `task.comment.updated`, `task.comment.deleted`, `task.attachment.added`,
 `task.attachment.deleted`

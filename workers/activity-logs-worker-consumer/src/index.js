@@ -1,5 +1,8 @@
 import handleProjectMemberAdded from './handlers/projectMemberAdded.js'
+import handleProjectMemberDeactivated from './handlers/projectMemberDeactivated.js'
+import handleProjectMemberReactivated from './handlers/projectMemberReactivated.js'
 import handleTaskAssigned from './handlers/taskAssigned.js'
+import handleTaskUnassigned from './handlers/taskUnassigned.js'
 import handleTaskUpdated from './handlers/taskUpdated.js'
 import handleTaskCompleted from './handlers/taskCompleted.js'
 import { startConsumer } from './rabbitmq.js'
@@ -32,6 +35,12 @@ async function handleEvent(event) {
     case 'project.member.added':
       return handleProjectMemberAdded(event)
 
+    case 'project.member.deactivated':
+      return handleProjectMemberDeactivated(event)
+
+    case 'project.member.reactivated':
+      return handleProjectMemberReactivated(event)
+
     //(new) project.updated
     case 'project.updated':
       return handleProjectUpdated(event)
@@ -58,6 +67,9 @@ async function handleEvent(event) {
 
     case 'task.assigned':
       return handleTaskAssigned(event)
+
+    case 'task.unassigned':
+      return handleTaskUnassigned(event)
 
     case 'task.updated':
       return handleTaskUpdated(event)
